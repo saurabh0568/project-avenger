@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Post Parcel Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Light Theme (Default) */
+        body.light-mode {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        /* Dark Theme */
+        body.dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        header {
+            background-color: #f44336;
+            padding: 20px;
+            color: white;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Secondary Navigation Bar */
+        .secondary-nav {
+            height: 150px;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center; /* Vertically center the logos */
+            justify-content: space-between; /* Place the logo and nav items on opposite sides */
+        }
+
+        .logo {
+            background: url("delivery.png");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 150%;
+            width: 250px;
+        }
+
+        .secondary-logo {
+            background: url("icon.png");
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 320%;
+            width: 400px;
+        }
+
+        .secondary-nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .secondary-nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .secondary-nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .secondary-nav ul li a:hover {
+            color: #f44336;
+        }
+
+
+        /* Slider section */
+        .slider {
+            width: 100%; /* Use 100% to ensure full width of the container */
+            height: 760px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .slides {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%; /* Ensure full height of the container */
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.6s ease;
+            opacity: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%; /* Stretch image to full height of the container */
+            object-fit: cover; /* Ensure the image covers the entire container */
+        }
+
+        .slide:first-child {
+            opacity: 1;
+        }
+
+        /* Navigation dots */
+        .navigation-auto {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(0%);
+            display: flex;
+        }
+
+
+        .navigation-auto div {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .active-dot {
+            background-color: #f44336;
+        }
+
+        main {
+            width: 80%;
+            margin: 20px auto;
+            /* margin-top: 100px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: #f44336;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #d32f2f;
+        }
+
+        footer {
+            background-color: #f44336;
+            padding: 10px;
+            color: white;
+            width: 100%;
+        }
+
+        /* Dark Theme Modifications */
+        body.dark-mode header,
+        body.dark-mode footer {
+            background-color: #444;
+        }
+
+        body.dark-mode nav ul li a {
+            color: #ddd;
+        }
+
+        body.dark-mode button {
+            background-color: #555;
+        }
+
+        body.dark-mode button:hover {
+            background-color: #333;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Language Dropdown */
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .language-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 2px slategrey;
+            border-bottom: 2px solid transparent;
+        }
+
+        .language-dropdown-content a:hover {
+            background-color: #f1f1f1;
+            border: 2px solid grey;
+        }
+
+        .language-dropdown:hover .language-dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Header Section -->
+    <!-- <header>
+        <h1>INDIA POST PARCEL SERVICE</h1>
+        <nav>
+            <ul>
+                <li><a href="#send-parcel">Send Parcel</a></li>
+                <li><a href="#recipient-change">Change Recipient Time Slot</a></li>
+                <li><a href="#track-parcel">Track Parcel</a></li>
+                <li><a href="#cancel-parcel">Cancel Parcel</a></li>
+                <li><a href="#feedback">Feedback for delivery</a></li>
+            </ul>
+        </nav>
+    </header> -->
+
+    <!-- Secondary Navigation Bar -->
+    <nav class="secondary-nav">
+        <div class="logo"></div>
+        <div class="secondary-logo"></div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about-us">About Us</a>
+            </li>
+            <li class="language-dropdown">
+                <a href="#services">Services</a>
+                <!-- <a href="#">Services</a> -->
+                <div class="language-dropdown-content">
+                    <a href="q.html">Book a Parcel</a>
+                    <a href="rec.html">Change Recipient Time Slot</a>
+                    <a href="#">Track Parcel</a>
+                    <a href="#">Cancel Pacel</a>
+                    <a href="#">Feedback</a>
+                </div>
+            </li>
+            <li><a href="#support">Customer Support</a></li>
+            <li class="language-dropdown">
+                <a href="#">Language</a>
+                <div class="language-dropdown-content">
+                    <a href="#">English</a>
+                    <a href="#">Hindi</a>
+                    <a href="#">Tamil</a>
+                    <a href="#">Bengali</a>
+                    <a href="#">Marathi</a>
+                    <a href="#">Gujarati</a>
+                    <a href="#">Punjabi</a>
+                    <a href="#">Telugu</a>
+                    <a href="#">Kannada</a>
+                    <a href="#">Malayali</a>
+                    <!-- Add more languages as needed -->
+                </div>
+            </li>
+            <li><a href="#account">My Account</a></li>
+        </ul>
+    </nav>
+
+    <!-- Slider Section -->
+    <section class="slider">
+        <div class="slides">
+            <!-- Radio buttons for image switching -->
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+
+            <!-- Slide Images -->
+            <div class="slide first">
+                <img src="lion.png" alt="Image 1">
+            </div>
+            <div class="slide second">
+                <img src="man.png" alt="Image 2">
+            </div>
+            <div class="slide third">
+                <img src="redfort.png" alt="Image 3">
+            </div>
+
+            <!-- Automatic Navigation Dots -->
+            <div class="navigation-auto">
+                <div class="auto-btn1 active-dot"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Section with Buttons -->
+    <main>
+        <section id="send-parcel">
+            <a href="q.html"><button>Book a Parcel</button></a>
+        </section>
+        <section id="recipient-change">
+            <a href="rec.html"><button>Change Recipient Time Slot</button></a>
+        </section>
+        <section id="track-parcel">
+            <button onclick="trackParcel()">Track Parcel</button>
+        </section>
+        <section id="cancel-parcel">
+            <button onclick="cancelParcel()">Cancel Parcel</button>
+        </section>
+        <section id="feedback">
+            <button onclick="provideFeedback()">Feedback for Delivery</button>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 India Post. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle-btn" onclick="toggleTheme()">Toggle Dark Mode</button>
+
+    <!-- JavaScript to add sliding functionality and theme toggle -->
+    <script>
+        let counter = 1;
+        const totalSlides = 3;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.navigation-auto div');
+    
+        function showSlide(index) {
+            // Reset all slides and dots
+            slides.forEach((slide, i) => {
+                slide.style.opacity = 0;
+                dots[i].classList.remove('active-dot');
+            });
+    
+            // Show the current slide
+            slides[index].style.opacity = 1;
+            dots[index].classList.add('active-dot');
+        }
+    
+        // Show the first slide on page load
+        showSlide(counter - 1);
+    
+        setInterval(function () {
+            // Move to the next slide
+            counter++;
+            if (counter > totalSlides) {
+                counter = 1;
+            }
+            showSlide(counter - 1);
+        }, 3000); // Change image every 3 seconds
+    
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
+        
+        function trackParcel() {
+            // Implement parcel tracking functionality here
+        }
+        
+        function cancelParcel() {
+            // Implement parcel cancel functionality here
+        }
+        
+        function provideFeedback() {
+            // Implement feedback functionality here
+        }
+    </script>
+    
+    <script src="delivery.js"></script>
+</body>
+</html>
