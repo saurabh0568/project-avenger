@@ -21,7 +21,7 @@
 
         /* Dark Theme */
         body.dark-mode {
-            background-color: #333;
+            background-color: black;
             color: white;
         }
 
@@ -98,7 +98,7 @@
 
         .secondary-nav ul li a {
             text-decoration: none;
-            color: #333;
+            color: black;
             font-size: 18px;
         }
 
@@ -197,26 +197,56 @@
         }
 
         /* Dark Theme Modifications */
-        body.dark-mode header,
+        body.dark-mode header {
+            background-color: black;
+        }
+
         body.dark-mode footer {
-            background-color: #444;
+            background-color: black;
         }
 
         body.dark-mode nav ul li a {
-            color: #ddd;
+            color: white;
         }
 
         body.dark-mode button {
-            background-color: #555;
+            background-color: grey;
         }
 
         body.dark-mode button:hover {
-            background-color: #333;
+            background-color: grey;
+        }
+
+        body.dark-mode .logo {
+            background: url("darkl.png"); /* Path to your dark mode logo */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 150%;
+            width: 250px;
+        }
+
+        body.dark-mode .secondary-logo {
+            background: url("another.png"); /* Path to your dark mode logo */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 200%;
+            width: 300px;
+        }
+
+        body.dark-mode .third-logo {
+            background: url("symblack.png"); /* Path to your dark mode logo */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 90%;
+            width: 80px;
         }
 
         /* Theme toggle button */
         .theme-toggle-btn {
-            background-color: #f44336;
+            background-color: #ffffff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -230,7 +260,7 @@
         }
 
         .theme-toggle-btn:hover {
-            background-color: #d32f2f;
+            background-color: #ffffff;
         }
 
         /* Language Dropdown */
@@ -265,27 +295,57 @@
         .language-dropdown:hover .language-dropdown-content {
             display: block;
         }
+        /* Theme toggle button */
+        .theme-toggle-btn {
+            background-color: #ffffff; /* Initial red background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 30px;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: #ffffff; /* Darker red on hover */
+        }
+
+        body.dark-mode .theme-toggle-btn {
+            background-color: black;  /* White box in dark mode */
+            color: white;  /* Change the half-moon icon or text to black */
+        }
+
+        body.dark-mode .theme-toggle-btn:hover {
+            background-color: black;  /* Lighter white/grey on hover in dark mode */
+        }
+
     </style>
 </head>
-<body class="light-mode">
-    <!-- Header Section -->
-    <!-- <header>
-        <h1>INDIA POST PARCEL SERVICE</h1>
-        <nav>
-            <ul>
-                <li><a href="#send-parcel">Send Parcel</a></li>
-                <li><a href="#recipient-change">Change Recipient Time Slot</a></li>
-                <li><a href="#track-parcel">Track Parcel</a></li>
-                <li><a href="#cancel-parcel">Cancel Parcel</a></li>
-                <li><a href="#feedback">Feedback for delivery</a></li>
-            </ul>
-        </nav>
+        <body class="light-mode">
+            <!-- Header Section -->
+            <!-- <header>
+                <h1>INDIA POST PARCEL SERVICE</h1>
+                <nav>
+                    <ul>
+                        <li><a href="#send-parcel">Send Parcel</a></li>
+                        <li><a href="#recipient-change">Change Recipient Time Slot</a></li>
+                        <li><a href="#track-parcel">Track Parcel</a></li>
+                        <li><a href="#cancel-parcel">Cancel Parcel</a></li>
+                        <li><a href="#feedback">Feedback for delivery</a></li>
+                    </ul>
+                </nav>
     </header> -->
 
     <!-- Secondary Navigation Bar -->
     <nav class="secondary-nav">
         <div class="logo"></div>
         <div class="secondary-logo"></div>
+        <div class="third-logo"></div>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about-us">About Us</a>
@@ -375,7 +435,7 @@
     </footer>
 
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle-btn" onclick="toggleTheme()">Toggle Dark Mode</button>
+    <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">🌙</button>
 
     <!-- JavaScript to add sliding functionality and theme toggle -->
     <script>
@@ -410,8 +470,18 @@
     
         // Theme Toggle Functionality
         function toggleTheme() {
-            document.body.classList.toggle("dark-mode");
+            const body = document.body;
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            body.classList.toggle('dark-mode');
+
+            // Change the icon based on the mode
+            if (body.classList.contains('dark-mode')) {
+                themeToggleBtn.innerHTML = '☀'; // Sun for dark mode
+            } else {
+                themeToggleBtn.innerHTML = '🌙'; // Moon for light mode
+            }
         }
+
         
         function trackParcel() {
             // Implement parcel tracking functionality here
