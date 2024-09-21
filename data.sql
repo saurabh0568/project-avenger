@@ -1,4 +1,4 @@
-CREATE DATABASE india_post_db;
+CREATE DATABASE india_post;
 
 USE india_post_db;
 
