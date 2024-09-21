@@ -124,37 +124,37 @@
     <section id="booking-form">
       <h2>Select Your Delivery Time Slot</h2>
 
-      <form id="deliveryForm">
+      <form id="deliveryForm" action="1.php" method="POST">
         <div class="form-group">
           <label for="name">Sender Name:</label>
           <input type="text" id="name" name="name" required>
         </div>
         
         <div class="form-group">
-          <label for="name">Recipient Name:</label>
-          <input type="text" id="name" name="name" required>
+          <label for="recipient_name">Recipient Name:</label>
+          <input type="text" id="recipient_name" name="recipient_name" required>
         </div>
-
+      
         <div class="form-group">
-          <label for="name">Sender Contact:</label>
-          <input type="tel" id="name" name="Enter your contect number here" required>
+          <label for="sender_contact">Sender Contact:</label>
+          <input type="tel" id="sender_contact" name="sender_contact" required>
         </div>
-
+      
         <div class="form-group">
-          <label for="name">Recipient Contact:</label>
-          <input type="tel" id="name" name="Enter your contect number here" required>
+          <label for="recipient_contact">Recipient Contact:</label>
+          <input type="tel" id="recipient_contact" name="recipient_contact" required>
         </div>
-
+      
         <div class="form-group">
           <label for="address">Delivery Address:</label>
           <textarea id="address" name="address" required></textarea>
         </div>
-
+      
         <div class="form-group">
           <label for="date">Preferred Delivery Date:</label>
           <input type="date" id="date" name="date" required>
         </div>
-
+      
         <div class="form-group">
           <label for="weight">Weight:</label>
           <input type="number" id="weight" name="weight" required>
@@ -163,16 +163,17 @@
               <option value="kg">kg (kilograms)</option>
           </select>
         </div>
-
+      
         <div class="form-group">
           <label for="timeSlot">Available Time Slots:</label>
           <select id="timeSlot" name="timeSlot" required>
             <option value="">Select a time slot</option>
           </select>
         </div>
-
+      
         <button type="submit">Proceed to Payment</button>
       </form>
+      
     </section>
 
     <section id="confirmation" style="display: none;">
