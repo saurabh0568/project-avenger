@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Post AI-Based Parcel Delivery</title>
+  <link rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    
+    header {
+      background-color: #008080;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    main {
+      margin: 2rem auto;
+      width: 50%;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    button {
+      background-color: #008080;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #006666;
+    }
+    
+    #confirmationMessage {
+      font-size: 1.2rem;
+      color: green;
+    }
+
+    #parcel-weight {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        #parcel-weight h2 {
+            margin-top: 0;
+        }
+
+        #parcel-weight form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #parcel-weight label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #parcel-weight input[type="number"],
+        #parcel-weight select {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #parcel-weight button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #parcel-weight button:hover {
+            background-color: #d32f2f;
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI-Based Parcel Delivery by India Post</h1>
+  </header>
+
+  <main>
+    <section id="booking-form">
+      <h2>Select Your Delivery Time Slot</h2>
+
+      <form id="deliveryForm">
+        <div class="form-group">
+          <label for="name">Sender Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="name">Recipient Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Sender Contact:</label>
+          <input type="tel" id="name" name="Enter your contect number here" required>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Recipient Contact:</label>
+          <input type="tel" id="name" name="Enter your contect number here" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address:</label>
+          <textarea id="address" name="address" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Preferred Delivery Date:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="weight">Weight:</label>
+          <input type="number" id="weight" name="weight" required>
+          <select id="weight-unit" name="weight-unit" required>
+              <option value="g">g (grams)</option>
+              <option value="kg">kg (kilograms)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="timeSlot">Available Time Slots:</label>
+          <select id="timeSlot" name="timeSlot" required>
+            <option value="">Select a time slot</option>
+          </select>
+        </div>
+
+        <button type="submit">Proceed to Payment</button>
+      </form>
+    </section>
+
+    <section id="confirmation" style="display: none;">
+      <h2>Booking Confirmation</h2>
+      <p id="confirmationMessage"></p>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('deliveryForm');
+      const timeSlotDropdown = document.getElementById('timeSlot');
+      const confirmationSection = document.getElementById('confirmation');
+      const confirmationMessage = document.getElementById('confirmationMessage');
+
+      // Function to simulate fetching AI-generated time slots from backend
+      function fetchAvailableTimeSlots(date) {
+        // Simulate an API call to get time slots
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const slots = [
+              '09:00 AM - 11:00 AM',
+              '11:00 AM - 01:00 PM',
+              '01:00 PM - 03:00 PM',
+              '03:00 PM - 05:00 PM',
+              '05:00 PM - 07:00 PM'
+            ];
+            resolve(slots);
+          }, 1000);
+        });
+      }
+
+      // Event listener for date selection
+      document.getElementById('date').addEventListener('change', async (event) => {
+        const selectedDate = event.target.value;
+
+        // Clear previous time slots
+        timeSlotDropdown.innerHTML = '<option value="">Select a time slot</option>';
+
+        if (selectedDate) {
+          const timeSlots = await fetchAvailableTimeSlots(selectedDate);
+
+          // Populate the dropdown with AI-generated time slots
+          timeSlots.forEach(slot => {
+            const option = document.createElement('option');
+            option.value = slot;
+            option.textContent = slot;
+            timeSlotDropdown.appendChild(option);
+          });
+        }
+      });
+
+      // Event listener for form submission
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const recipientName = document.getElementById('name').value;
+        const deliveryDate = document.getElementById('date').value; 
+        const timeSlot = timeSlotDropdown.value;
+
+        if (recipientName && deliveryDate && timeSlot) {
+          // Display confirmation message
+          confirmationMessage.textContent = `Your parcel for ${recipientName} will be delivered on ${deliveryDate} during the ${timeSlot} slot.`;
+          confirmationSection.style.display = 'block';
+        }
+      });
+    });
+
+    document.getElementById('send-parcel').addEventListener('click', function() {
+      alert('Send Parcel button clicked');
+    });
+
+    document.getElementById('recipient-change').addEventListener('click', function() {
+      alert('Recipient Change Time Slot button clicked');
+    });
+
+    document.getElementById('track-parcel').addEventListener('click', function() {
+      alert('Track Parcel button clicked');
+    });
+  </script>
+</body>
+</html>

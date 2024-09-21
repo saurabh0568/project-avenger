@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel Delivery Time Slot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #message {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Change Delivery Time Slot</h1>
+        <form id="deliveryForm">
+            <label for="deliveryId">Delivery ID:</label>
+            <input type="text" id="deliveryId" name="deliveryId" required>
+            <label for="newDateSlot">New Date Slot:</label>
+            <input type="date" id="newDateSlot" name="newDateSlot" required>
+            <button type="submit">Update Date Slot</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script>
+        document.getElementById('deliveryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Retrieve input values
+            const deliveryId = document.getElementById('deliveryId').value;
+            const newDateSlot = document.getElementById('newDateSlot').value;
+
+            // Mock API call to update time slot (simulate with setTimeout)
+            setTimeout(() => {
+                // Normally, you would send a request to the server here
+                document.getElementById('message').innerText = `Delivery ID ${deliveryId} date slot updated to ${newDateSlot}.`;
+            }, 1000); // Simulating network delay
+        });
+    </script>
+</body>
+</html> 
