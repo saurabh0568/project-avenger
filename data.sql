@@ -1,6 +1,6 @@
 CREATE DATABASE india_post;
 
-USE india_post_db;
+USE india_post;
 
 CREATE TABLE parcel_deliveries (
     id INT AUTO_INCREMENT PRIMARY KEY,
