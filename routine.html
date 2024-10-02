@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Postman Schedule</h2>
+    <form id="scheduleForm">
+        <label for="postmanId">Postman ID:</label><br>
+        <input type="text" id="postmanId" name="postmanId" required><br><br>
+
+        <label for="pincode">Pincode:</label><br>
+        <input type="text" id="pincode" name="pincode" required pattern="\d{6}"><br><br>
+
+        <button type="button" onclick="showSchedule()">Show Schedule</button>
+    </form>
+
+    <div id="schedule" class="hidden">
+        <h3>Your Schedule:</h3>
+        <ul id="scheduleList"></ul>
+    </div>
+
+    <script>
+        function showSchedule() {
+            const postmanId = document.getElementById('postmanId').value;
+            const pincode = document.getElementById('pincode').value;
+
+            // Dummy schedule data based on Postman ID and Pincode
+            const scheduleData = {
+                '1234': ['Delivery at 10 AM', 'Pickup at 2 PM'],
+                '5678': ['Delivery at 11 AM', 'Pickup at 3 PM'],
+            };
+
+            // Get the schedule based on Postman ID
+            const schedule = scheduleData[postmanId] || ['No schedule available.'];
+
+            // Populate the schedule list
+            const scheduleList = document.getElementById('scheduleList');
+            scheduleList.innerHTML = ''; // Clear previous schedule
+            schedule.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                scheduleList.appendChild(li);
+            });
+
+            // Show the schedule div
+            document.getElementById('schedule').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
