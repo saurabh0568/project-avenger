@@ -1,6 +1,6 @@
 SCREENSHOTS OF PROTOTYPE PROJECT
 
-![Screenshot 2024-10-02 174124](https://github.com/user-attachments/assets/68c0042e-9588-42c3-abbf-bf2b44dbf057)
+![Screenshot 2024-10-02 175134](https://github.com/user-attachments/assets/fc59870d-d46a-4009-a665-690e78b8ae69)
 
 ![Screenshot 2024-10-02 174223](https://github.com/user-attachments/assets/624c82be-f620-422c-8a8d-326ade23de61)
 
