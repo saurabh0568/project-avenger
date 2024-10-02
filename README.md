@@ -1,4 +1,9 @@
 SCREENSHOTS OF PROTOTYPE PROJECT
+
+![Screenshot 2024-10-02 174124](https://github.com/user-attachments/assets/68c0042e-9588-42c3-abbf-bf2b44dbf057)
+
+![Screenshot 2024-10-02 174223](https://github.com/user-attachments/assets/624c82be-f620-422c-8a8d-326ade23de61)
+
 ![Screenshot 2024-10-02 174257](https://github.com/user-attachments/assets/ddee0194-a8f7-414c-aec0-b493d77bdd82)
 
 ![Screenshot 2024-10-02 174329](https://github.com/user-attachments/assets/3cf47c64-0a65-4304-91b8-54af6e4fc669)
@@ -13,6 +18,3 @@ SCREENSHOTS OF PROTOTYPE PROJECT
 
 ![Screenshot 2024-10-02 174506](https://github.com/user-attachments/assets/6c7bbc91-3000-4a66-a148-c73eb6019d33)
 
-![Screenshot 2024-10-02 174124](https://github.com/user-attachments/assets/68c0042e-9588-42c3-abbf-bf2b44dbf057)
-
-![Screenshot 2024-10-02 174223](https://github.com/user-attachments/assets/624c82be-f620-422c-8a8d-326ade23de61)
