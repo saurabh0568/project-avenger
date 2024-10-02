@@ -57,8 +57,8 @@
 
         /* Secondary Navigation Bar */
         .secondary-nav {
-            height: 150px;
-            padding: 15px;
+            height: 95px;
+            padding: 10px;
             border-bottom: 1px solid #ccc;
             display: flex;
             align-items: center; /* Vertically center the logos */
@@ -70,8 +70,8 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 150%;
-            width: 250px;
+            height: 110%;
+            width: 180px;
         }
 
         .secondary-logo {
@@ -79,8 +79,8 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 320%;
-            width: 400px;
+            height: 150%;
+            width: 350px;
         }
 
         .secondary-nav ul {
@@ -110,8 +110,8 @@
         /* Slider section */
         .slider {
             width: 100%; /* Use 100% to ensure full width of the container */
-            height: 760px;
-            margin: 20px auto;
+            height: 500px;
+            margin: 0px auto;
             position: relative;
         }
 
@@ -180,7 +180,7 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             height: 250px;
-            margin: 15px;
+            margin: 40px;
             text-align: center;
             overflow: hidden;
             transition: transform 0.3s;
@@ -216,7 +216,7 @@
         }
 
         body.dark-mode footer {
-            background-color: black;
+            background-color: grey;
         }
 
         body.dark-mode nav ul li a {
@@ -236,8 +236,8 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 150%;
-            width: 250px;
+            height: 110%;
+            width: 180px;
         }
 
         body.dark-mode .secondary-logo {
@@ -245,8 +245,8 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 200%;
-            width: 300px;
+            height: 170%;
+            width: 260px;
         }
 
         body.dark-mode .third-logo {
@@ -254,7 +254,7 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            height: 90%;
+            height: 110%;
             width: 80px;
         }
 
@@ -337,7 +337,138 @@
         body.dark-mode .theme-toggle-btn:hover {
             background-color: black;  /* Lighter white/grey on hover in dark mode */
         }
+        /* Bottom-right button styling */
+        .bottom-right-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f44336; /* Button color */
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Make sure the button is above all other content */
+            transition: background-color 0.3s ease;
+        }
 
+        .bottom-right-btn:hover {
+            background-color: #d32f2f; /* Darker shade on hover */
+        }
+
+        #chatbotWindow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatbotHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff5722;
+            padding: 10px;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #chatContent {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chatMessages {
+            height: 300px;
+            overflow-y: auto;
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 75%;
+        }
+
+        .user {
+            background-color: #d1e7dd;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background-color: #ffeeba;
+            align-self: flex-start;
+        }
+
+        .suggestion-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+        }
+
+        .suggestion-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .suggestion-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #chatbotFooter {
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Button to open chatbot */
+        #openChatbotBtn {
+            position: fixed;
+            bottom: 8px;
+            right: 20px;
+            background-color: #ffffff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #openChatbotBtn:hover {
+            background-color: #ffffff;
+        }
+        
     </style>
 </head>
         <body class="light-mode">
@@ -361,21 +492,21 @@
         <div class="secondary-logo"></div>
         <div class="third-logo"></div>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about-us">About Us</a>
-            </li>
+            <li><a href="http://127.0.0.1:5500/saurabh.html">Home</a></li>
+            <li><a href="https://www.indiapost.gov.in/VAS/Pages/AboutUs/AboutUs.aspx" target="_blank">About Us</a></li>
+
             <li class="language-dropdown">
                 <a href="#services">Services</a>
                 <!-- <a href="#">Services</a> -->
                 <div class="language-dropdown-content">
                     <a href="q.html">Send a Parcel</a>
                     <a href="rec.html">Change Time Slot</a>
-                    <a href="#">Track Parcel</a>
-                    <a href="#">Cancel Pacel</a>
-                    <a href="#">Feedback</a>
+                    <a href="https://www.google.com/maps">Track Parcel</a>
+                    <a href="cancel.html">Cancel Pacel</a>
+                    <a href="feedback.html">Feedback</a>
                 </div>
             </li>
-            <li><a href="#support">Customer Support</a></li>
+            <li><a href="https://uat.indiapost.gov.in/VAS/Pages/CustomerSupport/Customer-Care.aspx">Customer Support</a></li>
             <li class="language-dropdown">
                 <a href="#">Language</a>
                 <div class="language-dropdown-content">
@@ -406,13 +537,13 @@
 
             <!-- Slide Images -->
             <div class="slide first">
-                <img src="lion.png" alt="Image 1">
+                <img src="s1.png" alt="Image 1">
             </div>
             <div class="slide second">
-                <img src="gen1.png" alt="Image 2">
+                <img src="s2.png" alt="Image 2">
             </div>
             <div class="slide third">
-                <img src="redfort.png" alt="Image 3">
+                <img src="scheme.png" alt="Image 3">
             </div>
 
             <!-- Automatic Navigation Dots -->
@@ -435,22 +566,23 @@
             <p>Change Time Slot</p>
         </div>
 
-        <div class="box" onclick="trackParcel()">
+        <div class="box" onclick="window.location.href='https://www.google.com/maps'">
             <img src="track3.png" alt="Track Parcel">
             <p>Track Parcel</p>
         </div>
+        
 
-        <div class="box" onclick="cancelParcel()">
+        <div class="box" onclick="window.location.href='cancel.html'">
             <img src="cancel.png" alt="Cancel Parcel">
             <p>Cancel Parcel</p>
         </div>
 
-        <div class="box" onclick="feedbackForm()">
+        <div class="box" onclick="window.location.href='feedback.html'">
             <img src="feedback.png" alt="Provide Feedback">
             <p>Provide Feedback</p>
         </div>
 
-        <div class="box" onclick="Routine()">
+        <div class="box" onclick="window.location.href='routine.html'">
             <img src="postman1.png" alt="Postman Routine">
             <p>Postman Routine</p>
         </div>
@@ -463,6 +595,25 @@
 
     <!-- Theme Toggle Button -->
     <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">🌙</button>
+    <button id="openChatbotBtn" onclick="toggleChatbot()">
+        <img src="chatbot.png" alt="Open Chatbot" style="width: 40px; height: 40px;"/>
+    </button>
+    
+    <div id="chatbotWindow">
+        <div id="chatbotHeader">
+          <h3>India Post Assistant</h3>
+          <button id="closeBtn" onclick="closeChatbot()">X</button>
+        </div>
+        <div id="chatContent">
+          <div id="chatMessages"></div>
+          <div class="suggestion-buttons" id="quickReplies">
+            <!-- Quick reply buttons will appear here -->
+          </div>
+        </div>
+        <div id="chatbotFooter">
+          <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="sendMessage(event)">
+        </div>
+    </div>
 
     <!-- JavaScript to add sliding functionality and theme toggle -->
     <script>
@@ -509,7 +660,9 @@
             }
         }
 
-        
+        function chatbot() {
+        }
+
         function trackParcel() {
             // Implement parcel tracking functionality here
         }
@@ -520,6 +673,97 @@
         
         function provideFeedback() {
             // Implement feedback functionality here
+        }
+
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '' ? 'block' : 'none';
+            if (chatbotWindow.style.display === 'block') {
+                welcomeMessage();
+            }
+        }
+
+        function closeChatbot() {
+            document.getElementById('chatbotWindow').style.display = 'none';
+        }
+
+        // Welcome message with quick replies
+        function welcomeMessage() {
+            setTimeout(() => {
+                displayMessage("Hello! How can I assist you today?", 'bot');
+                displayQuickReplies(["Track Parcel", "Office Hours", "Contact Us"]);
+            }, 1000);
+        }
+
+        // Handle user input
+        function sendMessage(event) {
+            if (event.key === 'Enter') {
+                const userInput = document.getElementById('userInput').value;
+                if (userInput.trim() !== "") {
+                displayMessage(userInput, 'user');
+                document.getElementById('userInput').value = '';
+                chatbotReply(userInput);
+                }
+            }
+        }
+
+        // Display message in the chat window
+        function displayMessage(message, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Simulate chatbot reply (you can modify this to add real functionality)
+        function chatbotReply(userInput) {
+            clearQuickReplies();  // Clear quick reply buttons after user input
+            const responses = {
+                "track": "Please provide your tracking number",
+                "hours": "India Post office hours are 9 AM to 6 PM (Except Sundays & Gazetted Holidays)",
+                "contact": "You can contact us at 18002666868. IVRS facility is available 24*7*365"
+            };
+
+            let reply = "I'm sorry, I didn't understand that. Can you please ask again?";
+            userInput = userInput.toLowerCase();
+
+            if (userInput.includes("track")) {
+                reply = responses["track"];
+            } else if (userInput.includes("hours")) {
+                reply = responses["hours"];
+            } else if (userInput.includes("contact")) {
+                reply = responses["contact"];
+            }
+
+            setTimeout(() => {
+                displayMessage(reply, 'bot');
+                displayQuickReplies(["Track Another Parcel", "Contact Support", "Office Hours"]);
+            }, 1000);  // Simulate delay for bot reply
+        }
+
+        // Display quick reply buttons
+        function displayQuickReplies(options) {
+            const quickRepliesDiv = document.getElementById('quickReplies');
+            quickRepliesDiv.innerHTML = ''; // Clear previous buttons
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => handleQuickReply(option);
+                quickRepliesDiv.appendChild(button);
+            });
+        }
+
+        // Handle quick reply button clicks
+        function handleQuickReply(option) {
+            displayMessage(option, 'user');
+            chatbotReply(option);
+        }
+
+        // Clear quick replies
+        function clearQuickReplies() {
+            document.getElementById('quickReplies').innerHTML = '';
         }
     </script>
     
