@@ -1,11 +1,18 @@
 SCREENSHOTS OF PROTOTYPE PROJECT
-![S1](https://github.com/user-attachments/assets/8b0695de-2c7f-4341-b648-067a0057d89a)
+![Screenshot 2024-10-02 174257](https://github.com/user-attachments/assets/ddee0194-a8f7-414c-aec0-b493d77bdd82)
 
+![Screenshot 2024-10-02 174329](https://github.com/user-attachments/assets/3cf47c64-0a65-4304-91b8-54af6e4fc669)
 
-![S2](https://github.com/user-attachments/assets/663d0086-148e-45aa-a776-55d37c64c6d9)
+![Screenshot 2024-10-02 174347](https://github.com/user-attachments/assets/dd32017c-3ad4-42a2-99c9-a3796dd5bb89)
 
+![Screenshot 2024-10-02 174411](https://github.com/user-attachments/assets/242edf4e-a3a0-4df3-bf3e-621638225d57)
 
-![S3](https://github.com/user-attachments/assets/32ede4cc-2a2f-4976-a496-b917bd7927f6)
+![Screenshot 2024-10-02 174440](https://github.com/user-attachments/assets/2912ed15-1142-489a-ad54-f5bfa7334ac1)
 
+![Screenshot 2024-10-02 174452](https://github.com/user-attachments/assets/20ed237a-3a48-4445-b9d6-5cfa6ba0090f)
 
-![S4](https://github.com/user-attachments/assets/56bd03ca-ed60-4ba2-a0ca-366f576f8e76)
+![Screenshot 2024-10-02 174506](https://github.com/user-attachments/assets/6c7bbc91-3000-4a66-a148-c73eb6019d33)
+
+![Screenshot 2024-10-02 174124](https://github.com/user-attachments/assets/68c0042e-9588-42c3-abbf-bf2b44dbf057)
+
+![Screenshot 2024-10-02 174223](https://github.com/user-attachments/assets/624c82be-f620-422c-8a8d-326ade23de61)
