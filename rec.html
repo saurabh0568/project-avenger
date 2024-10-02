@@ -32,19 +32,19 @@
             margin: 10px 0 5px;
         }
 
-        input {
+        select, button, input {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         button {
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 10px;
             cursor: pointer;
-            border-radius: 5px;
         }
 
         button:hover {
@@ -62,9 +62,20 @@
         <form id="deliveryForm">
             <label for="deliveryId">Delivery ID:</label>
             <input type="text" id="deliveryId" name="deliveryId" required>
+
             <label for="newDateSlot">New Date Slot:</label>
             <input type="date" id="newDateSlot" name="newDateSlot" required>
-            <button type="submit">Update Date Slot</button>
+
+            <label for="availableTimeSlot">Available Time Slot:</label>
+            <select id="availableTimeSlot" name="availableTimeSlot" required>
+                <option value="">Select a time slot</option>
+                <option value="08:00 AM-10:00 AM">8 AM - 10 AM</option>
+                <option value="12:00 PM-14:00 PM">12 PM - 2 PM</option>
+                <option value="15:00 PM-17:00 PM">3 PM - 5 PM</option>
+                <option value="18:00 PM-19:00 PM">6 PM - 7 PM</option>
+            </select>
+
+            <button type="submit">Update Date and Time Slot</button>
         </form>
         <div id="message"></div>
     </div>
@@ -75,13 +86,28 @@
             // Retrieve input values
             const deliveryId = document.getElementById('deliveryId').value;
             const newDateSlot = document.getElementById('newDateSlot').value;
+            const availableTimeSlot = document.getElementById('availableTimeSlot').value;
 
-            // Mock API call to update time slot (simulate with setTimeout)
-            setTimeout(() => {
-                // Normally, you would send a request to the server here
-                document.getElementById('message').innerText = `Delivery ID ${deliveryId} date slot updated to ${newDateSlot}.`;
-            }, 1000); // Simulating network delay
+            // Make POST request to Flask API to update the time slot
+            fetch('http://127.0.0.1:5000/update_time_slot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    deliveryId: deliveryId,
+                    newDateSlot: newDateSlot,
+                    availableTimeSlot: availableTimeSlot
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').innerText = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     </script>
 </body>
-</html> 
+</html>
