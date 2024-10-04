@@ -3,64 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show Schedule</title>
+    <title>Postman Lookup</title>
     <style>
+        /* CSS code */
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            max-width: 400px;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
-        .hidden {
-            display: none;
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .delivery-box {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e2f3e2; /* Light green background for the delivery box */
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h2>Postman Schedule</h2>
-    <form id="scheduleForm">
-        <label for="postmanId">Postman ID:</label><br>
-        <input type="text" id="postmanId" name="postmanId" required><br><br>
+    <div class="container">
+        <h1>POSTMAN ROUTINE</h1>
+        <form id="lookupForm">
+            <label for="id">Enter ID:</label>
+            <input type="number" id="id" name="id" required>
 
-        <label for="pincode">Pincode:</label><br>
-        <input type="text" id="pincode" name="pincode" required pattern="\d{6}"><br><br>
+            <label for="pincode">Enter Pincode:</label>
+            <input type="text" id="pincode" name="pincode" required>
 
-        <button type="button" onclick="showSchedule()">Show Schedule</button>
-    </form>
+            <label for="date">Select Delivery Date:</label>
+            <input type="date" id="date" name="date" required>
 
-    <div id="schedule" class="hidden">
-        <h3>Your Schedule:</h3>
-        <ul id="scheduleList"></ul>
+            <button type="submit">Search</button>
+        </form>
+
+        <div id="result" class="result-container"></div>
     </div>
 
     <script>
-        function showSchedule() {
-            const postmanId = document.getElementById('postmanId').value;
+        // JavaScript code
+        document.getElementById('lookupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById('id').value;
             const pincode = document.getElementById('pincode').value;
+            const date = document.getElementById('date').value;
 
-            // Dummy schedule data based on Postman ID and Pincode
-            const scheduleData = {
-                '1234': ['Delivery at 10 AM', 'Pickup at 2 PM'],
-                '5678': ['Delivery at 11 AM', 'Pickup at 3 PM'],
-            };
+            // Fetch request to Flask API
+            fetch('http://localhost:5000/get_postman', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id, pincode: pincode, date: date })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultContainer = document.getElementById('result');
+                resultContainer.innerHTML = ''; // Clear previous results
 
-            // Get the schedule based on Postman ID
-            const schedule = scheduleData[postmanId] || ['No schedule available.'];
+                if (data.message) {
+                    resultContainer.innerHTML = `<p>${data.message}</p>`;
+                } else {
+                    let resultHTML = `<h3>Postman Details:</h3>`;
+                    resultHTML += `<p>ID: ${data.postman.id}</p>`;
+                    resultHTML += `<p>Name: ${data.postman.name}</p>`;
+                    resultHTML += `<p>Pincode: ${data.postman.pincode}</p>`;
 
-            // Populate the schedule list
-            const scheduleList = document.getElementById('scheduleList');
-            scheduleList.innerHTML = ''; // Clear previous schedule
-            schedule.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                scheduleList.appendChild(li);
+                    resultHTML += '<h3>Routine Deliveries:</h3>';
+                    data.deliveries.forEach(delivery => {
+                        resultHTML += `
+                            <div class="delivery-box">
+                                <h4>Delivery Information</h4>
+                                <p><strong>Recipient Name:</strong> ${delivery.recipient_name}</p>
+                                <p><strong>Recipient Contact:</strong> ${delivery.recipient_contact}</p>
+                                <p><strong>Delivery Address:</strong> ${delivery.delivery_address}</p>
+                                <p><strong>Delivery Date:</strong> ${delivery.delivery_date}</p>
+                                <p><strong>Time Slot:</strong> ${delivery.time_slot}</p>
+                            </div>`;
+                    });
+                    resultContainer.innerHTML = resultHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p>Error fetching data</p>';
             });
-
-            // Show the schedule div
-            document.getElementById('schedule').classList.remove('hidden');
-        }
+        });
     </script>
 </body>
 </html>
