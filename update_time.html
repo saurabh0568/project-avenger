@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcel Delivery Time Slot</title>
+    <link rel="stylesheet" href="update_time.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Change Delivery Time Slot</h1>
+        <form id="deliveryForm">
+            <label for="deliveryId">Delivery ID:</label>
+            <input type="text" id="deliveryId" name="deliveryId" required>
+
+            <label for="newDateSlot">New Date Slot:</label>
+            <input type="date" id="newDateSlot" name="newDateSlot" required>
+
+            <label for="availableTimeSlot">Available Time Slot:</label>
+            <select id="availableTimeSlot" name="availableTimeSlot" required>
+                <option value="">Select a time slot</option>
+                <option value="08:00 AM-10:00 AM">8 AM - 10 AM</option>
+                <option value="12:00 PM-14:00 PM">12 PM - 2 PM</option>
+                <option value="15:00 PM-17:00 PM">3 PM - 5 PM</option>
+                <option value="18:00 PM-19:00 PM">6 PM - 7 PM</option>
+            </select>
+
+            <button type="submit">Update Date and Time Slot</button>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script src="update_time.js"></script>
+</body>
+</html>
