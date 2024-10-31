@@ -4,471 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>India Post Parcel Service</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        /* Light Theme (Default) */
-        body.light-mode {
-            background-color: #ffffff;
-            color: black;
-        }
-
-        /* Dark Theme */
-        body.dark-mode {
-            background-color: black;
-            color: white;
-        }
-
-        header {
-            background-color: #f44336;
-            padding: 20px;
-            color: white;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 36px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        /* Secondary Navigation Bar */
-        .secondary-nav {
-            height: 95px;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            display: flex;
-            align-items: center; /* Vertically center the logos */
-            justify-content: space-between; /* Place the logo and nav items on opposite sides */
-        }
-
-        .logo {
-            background: url("delivery.png");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 110%;
-            width: 180px;
-        }
-
-        .secondary-logo {
-            background: url("icon.png");
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 150%;
-            width: 350px;
-        }
-
-        .secondary-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .secondary-nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        .secondary-nav ul li a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-        }
-
-        .secondary-nav ul li a:hover {
-            color: #f44336;
-        }
-
-
-        /* Slider section */
-        .slider {
-            width: 100%; /* Use 100% to ensure full width of the container */
-            height: 525px;
-            margin: 0px auto;
-            position: relative;
-        }
-
-        .slides {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .slide {
-            width: 100%;
-            height: 100%; /* Ensure full height of the container */
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: opacity 0.6s ease;
-            opacity: 0;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%; /* Stretch image to full height of the container */
-            object-fit: cover; /* Ensure the image covers the entire container */
-        }
-
-        .slide:first-child {
-            opacity: 1;
-        }
-
-        /* Navigation dots */
-        .navigation-auto {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(0%);
-            display: flex;
-        }
-
-
-        .navigation-auto div {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: white;
-            margin: 5px;
-            cursor: pointer;
-        }
-
-        .active-dot {
-            background-color: #f44336;
-        }
-        
-        main {
-            width: 80%;
-            margin: 20px auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        /* Box styling */
-        .box {
-            background-color: #fff;
-            border-radius: 30px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            height: 250px;
-            margin: 40px;
-            text-align: center;
-            overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-
-        .box:hover {
-            transform: scale(1.06);
-        }
-
-        .box img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .box p {
-            padding: 10px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        footer {
-            background-color: #f44336;
-            padding: 10px;
-            color: white;
-            width: 100%;
-        }
-
-        /* Dark Theme Modifications */
-        body.dark-mode header {
-            background-color: black;
-        }
-
-        body.dark-mode footer {
-            background-color: grey;
-        }
-
-        body.dark-mode nav ul li a {
-            color: white;
-        }
-
-        body.dark-mode button {
-            background-color: grey;
-        }
-
-        body.dark-mode button:hover {
-            background-color: grey;
-        }
-
-        body.dark-mode .logo {
-            background: url("darkl.png"); /* Path to your dark mode logo */
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 110%;
-            width: 180px;
-        }
-
-        body.dark-mode .secondary-logo {
-            background: url("another.png"); /* Path to your dark mode logo */
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 170%;
-            width: 260px;
-        }
-
-        body.dark-mode .third-logo {
-            background: url("symblack.png"); /* Path to your dark mode logo */
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 110%;
-            width: 80px;
-        }
-
-        /* Theme toggle button */
-        .theme-toggle-btn {
-            background-color: #ffffff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: #ffffff;
-        }
-
-        /* Language Dropdown */
-        .language-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .language-dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .language-dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border-bottom: 2px slategrey;
-            border-bottom: 2px solid transparent;
-        }
-
-        .language-dropdown-content a:hover {
-            background-color: #f1f1f1;
-            border: 2px solid grey;
-        }
-
-        .language-dropdown:hover .language-dropdown-content {
-            display: block;
-        }
-        /* Theme toggle button */
-        .theme-toggle-btn {
-            background-color: #ffffff; /* Initial red background */
-            color: white;
-            padding: 0px 0px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 30px;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            background-color: #ffffff; /* Darker red on hover */
-        }
-
-        body.dark-mode .theme-toggle-btn {
-            background-color: black;  /* White box in dark mode */
-            color: white;  /* Change the half-moon icon or text to black */
-        }
-
-        body.dark-mode .theme-toggle-btn:hover {
-            background-color: black;  /* Lighter white/grey on hover in dark mode */
-        }
-        /* Bottom-right button styling */
-        .bottom-right-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #f44336; /* Button color */
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1000; /* Make sure the button is above all other content */
-            transition: background-color 0.3s ease;
-        }
-
-        .bottom-right-btn:hover {
-            background-color: #d32f2f; /* Darker shade on hover */
-        }
-
-        #chatbotWindow {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            background-color: #f1f1f1;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: none;
-            flex-direction: column;
-        }
-
-        #chatbotHeader {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #ff5722;
-            padding: 10px;
-            color: white;
-            border-radius: 10px 10px 0 0;
-        }
-
-        #chatContent {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #chatMessages {
-            height: 300px;
-            overflow-y: auto;
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .message {
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 8px;
-            max-width: 75%;
-        }
-
-        .user {
-            background-color: #d1e7dd;
-            align-self: flex-end;
-        }
-
-        .bot {
-            background-color: #ffeeba;
-            align-self: flex-start;
-        }
-
-        .suggestion-buttons {
-            display: flex;
-            justify-content: flex-start;
-            gap: 5px;
-        }
-
-        .suggestion-buttons button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .suggestion-buttons button:hover {
-            background-color: #0056b3;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        #chatbotFooter {
-            padding: 5px;
-            display: flex;
-            justify-content: space-between;
-            background-color: #f8f9fa;
-            border-top: 1px solid #ddd;
-            border-radius: 0 0 10px 10px;
-        }
-
-        /* Button to open chatbot */
-        #openChatbotBtn {
-            position: fixed;
-            bottom: 8px;
-            right: 20px;
-            background-color: #ffffff;
-            color: white;
-            padding: 0px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #openChatbotBtn:hover {
-            background-color: #ffffff;
-        }
-        
+    <link rel="stylesheet" href="index.css">
+    <style> 
     </style>
 </head>
         <body class="light-mode">
@@ -486,8 +23,8 @@
                 <a href="#services">Services</a>
                 <!-- <a href="#">Services</a> -->
                 <div class="language-dropdown-content">
-                    <a href="q.html">Send a Parcel</a>
-                    <a href="rec.html">Change Time Slot</a>
+                    <a href="form/send_form.html">Send a Parcel</a>
+                    <a href="update_time.html">Change Time Slot</a>
                     <a href="https://www.google.com/maps">Track Parcel</a>
                     <a href="cancel.html">Cancel Pacel</a>
                     <a href="feedback.html">Feedback</a>
@@ -524,13 +61,13 @@
 
             <!-- Slide Images -->
             <div class="slide first">
-                <img src="rat.png" alt="Image 1">
+                <img src="images/rat.png" alt="Image 1">
             </div>
             <div class="slide second">
-                <img src="sew.png" alt="Image 2">
+                <img src="images/sew.png" alt="Image 2">
             </div>
             <div class="slide third">
-                <img src="scheme.png" alt="Image 3">
+                <img src="images/scheme.png" alt="Image 3">
             </div>
 
             <!-- Automatic Navigation Dots -->
@@ -543,34 +80,34 @@
     </section>
 
     <main>
-        <div class="box" onclick="window.location.href='q.html'">
-            <img src="send.png" alt="Send a Parcel">
+        <div class="box" onclick="window.location.href='send_form.html'">
+            <img src="images/send.png" alt="Send a Parcel">
             <p>Send a Parcel</p>
         </div>
 
-        <div class="box" onclick="window.location.href='rec.html'">
-            <img src="time4.png" alt="Change Time Slot">
+        <div class="box" onclick="window.location.href='update_time.html'">
+            <img src="images/time4.png" alt="Change Time Slot">
             <p>Change Time Slot</p>
         </div>
 
         <div class="box" onclick="window.location.href='https://www.google.com/maps'">
-            <img src="track3.png" alt="Track Parcel">
+            <img src="images/track3.png" alt="Track Parcel">
             <p>Track Parcel</p>
         </div>
         
 
         <div class="box" onclick="window.location.href='cancel.html'">
-            <img src="cancel.png" alt="Cancel Parcel">
+            <img src="images/cancel.png" alt="Cancel Parcel">
             <p>Cancel Parcel</p>
         </div>
 
         <div class="box" onclick="window.location.href='feedback.html'">
-            <img src="feedback.png" alt="Provide Feedback">
+            <img src="images/feedback.png" alt="Provide Feedback">
             <p>Provide Feedback</p>
         </div>
 
-        <div class="box" onclick="window.location.href='routine.html'">
-            <img src="postman1.png" alt="Postman Routine">
+        <div class="box" onclick="window.location.href='postman_routine.html'">
+            <img src="images/postman1.png" alt="Postman Routine">
             <p>Postman Routine</p>
         </div>
     </main>
@@ -583,7 +120,7 @@
     <!-- Theme Toggle Button -->
     <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">🌙</button>
     <button id="openChatbotBtn" onclick="toggleChatbot()">
-        <img src="chatbot.png" alt="Open Chatbot" style="width: 40px; height: 40px;"/>
+        <img src="images/chatbot.png" alt="Open Chatbot" style="width: 40px; height: 40px;"/>
     </button>
     
     <div id="chatbotWindow">
@@ -603,157 +140,6 @@
     </div>
 
     <!-- JavaScript to add sliding functionality and theme toggle -->
-    <script>
-        let counter = 1;
-        const totalSlides = 3;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.navigation-auto div');
-    
-        function showSlide(index) {
-            // Reset all slides and dots
-            slides.forEach((slide, i) => {
-                slide.style.opacity = 0;
-                dots[i].classList.remove('active-dot');
-            });
-    
-            // Show the current slide
-            slides[index].style.opacity = 1;
-            dots[index].classList.add('active-dot');
-        }
-    
-        // Show the first slide on page load
-        showSlide(counter - 1);
-    
-        setInterval(function () {
-            // Move to the next slide
-            counter++;
-            if (counter > totalSlides) {
-                counter = 1;
-            }
-            showSlide(counter - 1);
-        }, 3000); // Change image every 3 seconds
-    
-        // Theme Toggle Functionality
-        function toggleTheme() {
-            const body = document.body;
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            body.classList.toggle('dark-mode');
-
-            // Change the icon based on the mode
-            if (body.classList.contains('dark-mode')) {
-                themeToggleBtn.innerHTML = '☀'; // Sun for dark mode
-            } else {
-                themeToggleBtn.innerHTML = '🌙'; // Moon for light mode
-            }
-        }
-
-        function chatbot() {
-        }
-
-        function trackParcel() {
-            // Implement parcel tracking functionality here
-        }
-        
-        function cancelParcel() {
-            // Implement parcel cancel functionality here
-        }
-        
-        function provideFeedback() {
-            // Implement feedback functionality here
-        }
-
-        function toggleChatbot() {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            chatbotWindow.style.display = chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '' ? 'block' : 'none';
-            if (chatbotWindow.style.display === 'block') {
-                welcomeMessage();
-            }
-        }
-
-        function closeChatbot() {
-            document.getElementById('chatbotWindow').style.display = 'none';
-        }
-
-        // Welcome message with quick replies
-        function welcomeMessage() {
-            setTimeout(() => {
-                displayMessage("Hello! How can I assist you today?", 'bot');
-                displayQuickReplies(["Track Parcel", "Office Hours", "Contact Us"]);
-            }, 1000);
-        }
-
-        // Handle user input
-        function sendMessage(event) {
-            if (event.key === 'Enter') {
-                const userInput = document.getElementById('userInput').value;
-                if (userInput.trim() !== "") {
-                displayMessage(userInput, 'user');
-                document.getElementById('userInput').value = '';
-                chatbotReply(userInput);
-                }
-            }
-        }
-
-        // Display message in the chat window
-        function displayMessage(message, sender) {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', sender);
-            messageElement.textContent = message;
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        // Simulate chatbot reply (you can modify this to add real functionality)
-        function chatbotReply(userInput) {
-            clearQuickReplies();  // Clear quick reply buttons after user input
-            const responses = {
-                "track": "Please provide your tracking number",
-                "hours": "India Post office hours are 9 AM to 6 PM (Except Sundays & Gazetted Holidays)",
-                "contact": "You can contact us at 18002666868. IVRS facility is available 24*7*365"
-            };
-
-            let reply = "I'm sorry, I didn't understand that. Can you please ask again?";
-            userInput = userInput.toLowerCase();
-
-            if (userInput.includes("track")) {
-                reply = responses["track"];
-            } else if (userInput.includes("hours")) {
-                reply = responses["hours"];
-            } else if (userInput.includes("contact")) {
-                reply = responses["contact"];
-            }
-
-            setTimeout(() => {
-                displayMessage(reply, 'bot');
-                displayQuickReplies(["Track Another Parcel", "Contact Support", "Office Hours"]);
-            }, 1000);  // Simulate delay for bot reply
-        }
-
-        // Display quick reply buttons
-        function displayQuickReplies(options) {
-            const quickRepliesDiv = document.getElementById('quickReplies');
-            quickRepliesDiv.innerHTML = ''; // Clear previous buttons
-            options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.onclick = () => handleQuickReply(option);
-                quickRepliesDiv.appendChild(button);
-            });
-        }
-
-        // Handle quick reply button clicks
-        function handleQuickReply(option) {
-            displayMessage(option, 'user');
-            chatbotReply(option);
-        }
-
-        // Clear quick replies
-        function clearQuickReplies() {
-            document.getElementById('quickReplies').innerHTML = '';
-        }
-    </script>
-    
-    <script src="delivery.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
