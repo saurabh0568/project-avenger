@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>India Post Parcel Service</title>
     <link rel="stylesheet" href="index.css">
-    <style> 
+    <style>
     </style>
 </head>
-        <body class="light-mode">
+<body class="light-mode">
 
     <!-- Secondary Navigation Bar -->
     <nav class="secondary-nav">
@@ -21,12 +21,11 @@
 
             <li class="language-dropdown">
                 <a href="#services">Services</a>
-                <!-- <a href="#">Services</a> -->
                 <div class="language-dropdown-content">
                     <a href="form/send_form.html">Send a Parcel</a>
                     <a href="update_time.html">Change Time Slot</a>
                     <a href="https://www.google.com/maps">Track Parcel</a>
-                    <a href="cancel.html">Cancel Pacel</a>
+                    <a href="cancel.html">Cancel Parcel</a>
                     <a href="feedback.html">Feedback</a>
                 </div>
             </li>
@@ -44,33 +43,30 @@
                     <a href="#">Telugu</a>
                     <a href="#">Kannada</a>
                     <a href="#">Malayali</a>
-                    <!-- Add more languages as needed -->
                 </div>
             </li>
             <li><a href="#account">My Account</a></li>
+            <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">🌙</button>
         </ul>
     </nav>
 
     <!-- Slider Section -->
     <section class="slider">
         <div class="slides">
-            <!-- Radio buttons for image switching -->
             <input type="radio" name="radio-btn" id="radio1" checked>
             <input type="radio" name="radio-btn" id="radio2">
             <input type="radio" name="radio-btn" id="radio3">
 
-            <!-- Slide Images -->
             <div class="slide first">
-                <img src="images/rat.png" alt="Image 1">
+                <img src="images/sp.png" alt="Image 1">
             </div>
             <div class="slide second">
-                <img src="images/sew.png" alt="Image 2">
+                <img src="images/sw.png" alt="Image 2">
             </div>
             <div class="slide third">
                 <img src="images/scheme.png" alt="Image 3">
             </div>
 
-            <!-- Automatic Navigation Dots -->
             <div class="navigation-auto">
                 <div class="auto-btn1 active-dot"></div>
                 <div class="auto-btn2"></div>
@@ -78,51 +74,157 @@
             </div>
         </div>
     </section>
-
+    <div class="marquee-container">
+        <div class="marquee-text">
+            <span class="welcome-text" style="font-weight: bold;">Welcome to India Post</span>
+            <span class="follow-text" style="display: none; font-weight: bold;">
+                Follow us on 
+                <a href="#" target="_blank"><img src="images/facebook.png" alt="Facebook" style="width: 24px; height: 24px;"></a>
+                <a href="#" target="_blank"><img src="images/twitter.png" alt="Twitter" style="width: 24px; height: 24px;"></a>
+                <a href="#" target="_blank"><img src="images/youtube.png" alt="YouTube" style="width: 24px; height: 24px;"></a>
+                <a href="#" target="_blank"><img src="images/instagram.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+            </span>
+        </div>
+    </div>
+    
+    
     <main>
-        <div class="box" onclick="window.location.href='send_form.html'">
-            <img src="images/send.png" alt="Send a Parcel">
-            <p>Send a Parcel</p>
-        </div>
-
-        <div class="box" onclick="window.location.href='update_time.html'">
-            <img src="images/time4.png" alt="Change Time Slot">
-            <p>Change Time Slot</p>
-        </div>
-
-        <div class="box" onclick="window.location.href='https://www.google.com/maps'">
-            <img src="images/track3.png" alt="Track Parcel">
-            <p>Track Parcel</p>
-        </div>
+            <!-- Container to align support box and main boxes side by side -->
+            <div class="main-container">
+                
+                <!-- Customer Support Box (left side) -->
+                <div class="support-box">
+                    <img src="images/phone.png" alt="Phone Icon" style="width: 120px; height: 100px;">
+                    <p><strong>Toll Free Enquiry Helpline:</strong></p>
+                    <p style="font-size: 24px; color: #0066cc; font-weight: bold;">18002666868</p>
+                    <p>9:00 AM - 6:00 PM</p>
+                    <p style="font-size: 12px;">(Except Sundays & Gazetted Holidays)</p>
+                    <p style="font-weight: bold;">IVRS facility is available 24*7*365</p>
+                    <a href="#" style="color: #0066cc; text-decoration: none; font-weight: bold;">Register your complaint</a>
+                </div>
         
-
-        <div class="box" onclick="window.location.href='cancel.html'">
-            <img src="images/cancel.png" alt="Cancel Parcel">
-            <p>Cancel Parcel</p>
-        </div>
-
-        <div class="box" onclick="window.location.href='feedback.html'">
-            <img src="images/feedback.png" alt="Provide Feedback">
-            <p>Provide Feedback</p>
-        </div>
-
-        <div class="box" onclick="window.location.href='postman_routine.html'">
-            <img src="images/postman1.png" alt="Postman Routine">
-            <p>Postman Routine</p>
-        </div>
+                <!-- Main Boxes (right side) -->
+                <div class="boxes-container">
+                    <div class="box" onclick="window.location.href='send_form.html'">
+                        <img src="images/send.png" alt="Send a Parcel">
+                        <p>Send a Parcel</p>
+                    </div>
+        
+                    <div class="box" onclick="window.location.href='update_time.html'">
+                        <img src="images/time4.png" alt="Change Time Slot">
+                        <p>Change Time Slot</p>
+                    </div>
+        
+                    <div class="box" onclick="window.location.href='https://www.google.com/maps'">
+                        <img src="images/track3.png" alt="Track Parcel">
+                        <p>Track Parcel</p>
+                    </div>
+        
+                    <div class="box" onclick="window.location.href='cancel.html'">
+                        <img src="images/cancel.png" alt="Cancel Parcel">
+                        <p>Cancel Parcel</p>
+                    </div>
+        
+                    <div class="box" onclick="window.location.href='feedback.html'">
+                        <img src="images/feedback.png" alt="Provide Feedback">
+                        <p>Provide Feedback</p>
+                    </div>
+        
+                    <div class="box" onclick="window.location.href='postman_routine.html'">
+                        <img src="images/postman1.png" alt="Postman Routine">
+                        <p>Postman Routine</p>
+                    </div>
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+                <div class="sidebar-menu" id="sidebarMenu">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#">Find Pincode</a></li>
+                        <li><a href="#">Buy Stamps</a></li>
+                        <li><a href="#">Locate Post Office</a></li>
+                        <li><a href="#">Calculate Postage</a></li>
+                        <li><a href="#">Track Complaint</a></li>
+                        <li><a href="#">Tools & Help</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="accordion-container">
+                <!-- News and Updates Accordion -->
+                <div class="accordion-box">
+                  <div class="accordion-header" onclick="toggleAccordion('news')">News & Updates</div>
+                </div>
+            
+                <!-- Tenders Accordion -->
+                <div class="accordion-box">
+                  <div class="accordion-header" onclick="toggleAccordion('tenders')">Tenders</div>
+                </div>
+            
+                <!-- Notifications Accordion -->
+                <div class="accordion-box">
+                  <div class="accordion-header" onclick="toggleAccordion('notifications')">Notifications</div>
+                </div>
+            
+                <!-- Recruitment Accordion -->
+                <div class="accordion-box">
+                  <div class="accordion-header" onclick="toggleAccordion('recruitment')">Recruitment</div>
+                </div>
+            </div>
+            
+              <!-- Single content box for all sections -->
+            <div id="accordion-content" class="accordion-content">
+                <!-- Content will be populated based on clicked header -->
+            </div>
     </main>
 
     <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 India Post. All Rights Reserved.</p>
+        <div class="footer-container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Forms</a></li>
+                    <li><a href="#">Recruitments</a></li>
+                    <li><a href="#">Holidays</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Right To Information</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Tenders India</a></li>
+                    <li><a href="#">Related Sites</a></li>
+                    <li><a href="#">Website Policies</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Employee Corner</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+                <ul>
+                    <li><strong>External Links</strong></li>
+                    
+                    <img src="images/logo.png" alt="National Portal of India" style="width: 180px;">
+                    
+                    <li><a href="#">National Voter's Service Portal</a></li>
+                    <li><a href="#">India Code</a></li>
+                    <li><a href="#">Application Security Audit Report</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
+
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()">🌙</button>
+    
     <button id="openChatbotBtn" onclick="toggleChatbot()">
         <img src="images/chatbot.png" alt="Open Chatbot" style="width: 40px; height: 40px;"/>
     </button>
-    
+
     <div id="chatbotWindow">
         <div id="chatbotHeader">
           <h3>India Post Assistant</h3>
@@ -131,7 +233,6 @@
         <div id="chatContent">
           <div id="chatMessages"></div>
           <div class="suggestion-buttons" id="quickReplies">
-            <!-- Quick reply buttons will appear here -->
           </div>
         </div>
         <div id="chatbotFooter">
@@ -139,7 +240,8 @@
         </div>
     </div>
 
-    <!-- JavaScript to add sliding functionality and theme toggle -->
+    <!-- JavaScript for sliding functionality and theme toggle -->
     <script src="index.js"></script>
+    
 </body>
 </html>
