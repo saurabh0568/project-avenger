@@ -146,3 +146,110 @@ let counter = 1;
         function clearQuickReplies() {
             document.getElementById('quickReplies').innerHTML = '';
         }
+
+        function toggleMenu() {
+            var menu = document.getElementById("sidebarMenu");
+            menu.classList.toggle("closed"); // Toggle the 'closed' class to hide/show the menu
+        }  
+    const welcomeText = document.querySelector('.welcome-text');
+    const followText = document.querySelector('.follow-text');
+    const marqueeText = document.querySelector('.marquee-text');
+
+    let isWelcomeVisible = true;
+
+    function showText() {
+        if (isWelcomeVisible) {
+            welcomeText.style.display = 'block'; // Show welcome text
+            followText.style.display = 'none'; // Hide follow text
+            marqueeText.style.transform = 'translateX(0)'; // Slide in
+            setTimeout(() => {
+                welcomeText.classList.add('show'); // Fade in
+                setTimeout(() => {
+                    welcomeText.classList.remove('show'); // Fade out
+                    setTimeout(() => {
+                        marqueeText.style.transform = 'translateX(100%)'; // Slide out
+                    }, 500); // Wait for fade out before sliding out
+                }, 2000); // Show for 2 seconds
+            }, 100); // Wait for display to render
+        } else {
+            followText.style.display = 'block'; // Show follow text
+            welcomeText.style.display = 'none'; // Hide welcome text
+            marqueeText.style.transform = 'translateX(0)'; // Slide in
+            setTimeout(() => {
+                followText.classList.add('show'); // Fade in
+                setTimeout(() => {
+                    followText.classList.remove('show'); // Fade out
+                    setTimeout(() => {
+                        marqueeText.style.transform = 'translateX(100%)'; // Slide out
+                    }, 500); // Wait for fade out before sliding out
+                }, 2000); // Show for 2 seconds
+            }, 100); // Wait for display to render
+        }
+        isWelcomeVisible = !isWelcomeVisible; // Toggle visibility
+    }
+
+    // Set intervals for the text switch
+    setInterval(() => {
+        showText();
+    }, 2000); // Change text every 8 seconds
+
+    // Set content for each section based on initial state
+    function toggleAccordion(section) {
+        const content = document.getElementById('accordion-content');
+        let htmlContent = '';
+
+        document.querySelectorAll('#accordion div').forEach(div => {
+            div.classList.remove('active-heading');
+        });
+
+        // Define content for each section
+        switch (section) {
+            case 'news':
+                htmlContent = `
+                    <ul>
+                        <li><a href="#">Implementation of Philately Scholarship Scheme "Deen Dayal SPARSH Yojana" for the year 202425 - Kerala Circle</a></li>
+                        <li><a href="#">Industry consultation regarding on-boarding a new system Integrator</a></li>
+                        <li><a href="#">Universal Postal Union International Letter Writing Competition for Young People 2024</a></li>
+                        <li><a href="#">Dhai Akhar National Level Letter Writing Competition 2024-25</a></li>
+                    </ul>`;
+                break;
+            case 'tenders':
+                htmlContent = `
+                    <ul>
+                        <li><a href="#">Hiring of commercial vehicles fitted with GPS</a></li>
+                        <li><a href="#">Tender for procurement of CBS Passbooks – Nagpur Region (Tender ID : 2020_DOP_593471_1)</a></li>
+                        <li><a href="#">​P/PSD/CHN/NYLON ORANGE AIRMAIL BAGS/2020-2021​(Tender ID:2020_DOP_591585_1​)​</a></li>
+                        <li><a href="#">Security Services</a></li>
+                    </ul>`;
+                break;
+            case 'notifications':
+                htmlContent = `
+                    <ul>
+                        <li><a href="#">Guidelines for Harnessing Youth Power through Post Offices</a></li>
+                        <li><a href="#">Notification for Deen Dayal SPARSH Yojana – KERALA POSTAL CIRCLE</a></li>
+                        <li><a href="#">Advertisement For Hiring Of Post Office Accommodation on Lease/Rent Basis</a></li>
+                        <li><a href="#">Advertisement for accommodation of Saligramam PO</a></li>
+                    </ul>`;
+                break;
+            case 'recruitment':
+                htmlContent = `
+                    <ul>
+                        <li><a href="#">Direct Recruitment examination for Postman/Mailguard and MTS cadre - 11th list of Tainted candidates</a></li>
+                        <li><a href="#">Regarding publication of Result for the post of Mechanic (Motor Vehicle) in Mail Motor Service, Patna of Bihar Circle.</a></li>
+                        <li><a href="#">Result of Stage – I Examination in r/o Staff Car Drivers (Ordinary Grade) held on 17.03.2024 in H.P. Postal Circle</a></li>
+                        <li><a href="#">Display of final answer keys of paper-I under stage-I (Theory test) of Staff Car Driver</a></li>
+                    </ul>`;
+                break;
+            default:
+                htmlContent = ''; // Reset content if invalid section
+        }
+
+        // Set the HTML content and ensure the accordion content box is displayed
+        content.innerHTML = htmlContent;
+        content.style.display = htmlContent ? 'block' : 'none';
+    }
+
+    // Call the function to open 'news' section by default
+    toggleAccordion('news');
+
+    
