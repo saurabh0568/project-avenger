@@ -103,7 +103,7 @@ nav ul li a {
 /* Slider section */
 .slider {
     width: 100%; /* Use 100% to ensure full width of the container */
-    height: 525px;
+    height: 400px;
     margin: 0px auto;
     position: relative;
 }
@@ -158,22 +158,45 @@ nav ul li a {
     background-color: #f44336;
 }
 
-main {
-    width: 80%;
-    margin: 20px auto;
+/* Styling for main container to place elements side by side */
+.main-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: start;
+    padding: 20px;
+    gap: 20px;
+    flex-direction: row;
 }
 
-/* Box styling */
+/* Styling for the support box */
+.support-box {
+    width: 100px;
+    height: 300px;
+    padding: 20px;
+    background-color: white;
+    border: 0px solid white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 60px; 
+    margin-left: -40px;
+    flex: 0 0 auto; 
+}
+
+/* Styling for the boxes container */
+.boxes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
 .box {
+    
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 250px;
-    margin: 40px;
+    width: 100%;
+    
+    margin: 20px;
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s;
@@ -181,12 +204,13 @@ main {
 }
 
 .box:hover {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
+
 
 .box img {
     width: 100%;
-    height: 150px;
+    height: 130px;
     object-fit: cover;
 }
 
@@ -197,7 +221,7 @@ main {
 }
 
 footer {
-    background-color: #f44336;
+    background-color: white;
     padding: 10px;
     color: white;
     width: 100%;
@@ -460,4 +484,290 @@ input[type="text"] {
 
 #openChatbotBtn:hover {
     background-color: #ffffff;
+}
+
+/* Main Content Container */
+.main-content-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Support Box on the Left */
+.support-box {
+    width: 20%;
+}
+
+/* Six Boxes in the Center */
+.six-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60%;
+}
+
+/* Right-Side Menu Container */
+.right-side-menu {
+    width: 20%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Sidebar Menu - Initially Visible */
+.sidebar-menu {
+    display: block;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    width: 13%; 
+    height: 400px;/* Matches the width of the menu-toggle button */
+    margin-top: 40px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Slide and fade effect */
+}
+
+.sidebar-menu ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd; /* Line between items */
+}
+
+.sidebar-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sidebar-menu ul li a:hover {
+    color: #0056b3;
+}
+/* Hide sidebar menu with slide effect */
+.sidebar-menu.closed {
+    transform: translateX(100%); /* Slide out to the right */
+    opacity: 0; /* Fade out */
+}
+
+/* Marquee text styles */
+.marquee-text {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 50px; /* Height for the marquee */
+    background-color: #f3d5d5; /* Background color for contrast */
+    color: black; /* Text color */
+    font-size: 28px; /* Font size */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
+    padding: 0 20px; /* Add some padding */
+    animation: slide 10s linear infinite; /* Animation properties */
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Start invisible */
+    }
+    10% {
+        opacity: 1; /* Fade in */
+    }
+    20% {
+        transform: translateX(0); /* Move to original position */
+        opacity: 1; /* Fully visible */
+    }
+    80% {
+        transform: translateX(0); /* Stay in position */
+        opacity: 1; /* Fully visible */
+    }
+    90% {
+        opacity: 1; /* Fully visible */
+    }
+    100% {
+        transform: translateX(-100%); /* Move off-screen to the left */
+        opacity: 0; /* Fade out */
+    }
+}
+
+
+
+/* Main container styling */
+.accordion-container {
+    margin-top: 10px;
+    width: 100px; /* Keeps the top margin */
+    margin-left: 0px; /* Set left margin to 0 to align it to the left */
+    margin-right: auto; /* Ensures that the right margin is automatic */
+    padding: 20px; /* Optional padding */
+    background-color: white;
+    display: flex;
+}
+
+
+  /* Accordion section box styling */
+  .accordion-box {
+    flex: 0 0 190px; /* Makes each section equal width */
+    background-color: white;
+    border: 1px solid white;
+    border-left: none; /* Remove left border to join sections */
+    border-radius: 0; /* Remove radius for joined effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    min-height: 20px; /* Set a minimum height */
+  }
+
+  /* Add a border on the left only for the first box */
+  .accordion-box:first-child {
+    border-left: 1px solid #ccc;
+  }
+
+  /* Header for each accordion */
+  .accordion-header {
+    background-color: white;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 3px solid #4CAF50; /* Green line */
+    cursor: pointer;
+    text-align: center;
+  }
+
+  /* Content area for accordion */
+  .accordion-content {
+    display: block; 
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    margin-top: -15px; /* Space between header and content */
+    margin-left: 20px; /* Set left margin to 0 to align it to the left */
+    margin-right: auto;
+    margin-bottom: 30px;
+    background-color: white;
+    width: 740px;
+  }
+
+  /* List styling inside content */
+  .accordion-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .accordion-content ul li {
+    padding: 8px;
+    border-bottom: 1px solid white;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .accordion-content ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* Link styling */
+  .accordion-content ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s;
+  }
+
+  .accordion-content ul li a:hover {
+    color: #4CAF50; /* Green on hover */
+  }
+
+  footer {
+    background-color: white;
+    padding: 0px;
+    font-size: 14px;
+    color: #333;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 2000px;
+    margin-bottom: 0px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+.external-logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.external-logo p {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.social-icons {
+    display: flex;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.social-icons a img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-bottom {
+    max-width: 1000px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.footer-bottom a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
 }
