@@ -695,7 +695,7 @@ input[type="text"] {
 
   footer {
     background-color: white;
-    padding: 0px;
+    padding: 10px;
     font-size: 14px;
     color: #333;
 }
@@ -770,4 +770,28 @@ input[type="text"] {
 
 .footer-bottom a:hover {
     text-decoration: underline;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-left:900px;
+    margin-bottom:40px;
+    margin-top:-200px;
+}
+.profile {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #0056b3; /* Adjust color if needed */
+}
+.profile img {
+    width: 150px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 5px;
+}
+.profile p {
+    margin: 10px 0 0;
+    font-weight: bold;
 }
