@@ -10,10 +10,11 @@ body {
 
 .container {
     background: #fff;
-    padding: 30px; /* Increase padding */
+    padding: 40px; /* Increase padding */
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-    width: 500px; /* Increase width */
+    width: 1500px; /* Increase width */
+    
 }
 
 h1 {
