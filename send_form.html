@@ -251,12 +251,28 @@
             <button type="button" id="prev3">Previous</button>
             <button type="button" id="submit">Confirm</button>
           </div>
+          <div id="confirmationMessage" style="display: none; color: green;">
+            Your form has been submitted successfully!
+          </div> 
         </div>
-
       </form>
     </section>
   </main>
   <div id="statusMessage"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("submit").addEventListener("click", function() {
+        // Show the confirmation message
+        const confirmationMessage = document.getElementById("confirmationMessage");
+        confirmationMessage.style.display = "block";
+        
+        // Hide the confirmation message after 3 seconds
+        setTimeout(() => {
+          confirmationMessage.style.display = "none";
+        }, 3000);
+      });
+    });
+  </script>
   <script src="send_form.js"></script>
   
 </body>
