@@ -26,7 +26,7 @@ const id = localStorage.getItem('id');
                             <p><strong>Phone Number:</strong> ${data.postman.phone_number}</p>
                             <p><strong>Pincode:</strong> ${data.postman.pincode}</p>
                         </div>
-                        <img src="${data.postman.profile_image || 'profile.png'}" alt="Postman Profile Image" class="profile-image">
+                        <img src="${data.postman.profile_image || 'images/profile.png'}" alt="Postman Profile Image" class="profile-image">
                     </div>
                 `;
 
