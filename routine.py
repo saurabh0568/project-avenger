@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request, send_from_directory
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import os
+from flask import Flask, request, jsonify
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 CORS(app)
@@ -86,6 +91,58 @@ def get_postman():
     }
 
     return jsonify({'postman': postman_data, 'deliveries': deliveries, 'pickups': pickups})
+
+@app.route('/update_time_slot', methods=['POST'])
+def update_time_slot():
+    data = request.json
+    delivery_id = data.get('deliveryId')
+    action = data.get('action')  # pickup, delivery, or return
+    new_date_slot = data.get('newDateSlot')
+    available_time_slot = data.get('availableTimeSlot')
+
+    if not (delivery_id and action and new_date_slot and available_time_slot):
+        return jsonify({'message': 'Missing required data.'}), 400
+
+    try:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
+        # Determine which fields to update based on the action
+        if action == 'pickup':
+            query = """
+                UPDATE parcel_deliveries 
+                SET pickup_date = %s, pickup_time_slot = %s 
+                WHERE id = %s
+            """
+            values = (new_date_slot, available_time_slot, delivery_id)
+        elif action == 'delivery':
+            query = """
+                UPDATE parcel_deliveries 
+                SET delivery_date = %s, delivery_time_slot = %s 
+                WHERE id = %s
+            """
+            values = (new_date_slot, available_time_slot, delivery_id)
+        elif action == 'return':
+            query = """
+                UPDATE parcel_deliveries 
+                SET return_date = %s, return_time = %s 
+                WHERE id = %s
+            """
+            values = (new_date_slot, available_time_slot, delivery_id)
+        else:
+            return jsonify({'message': 'Invalid action selected.'}), 400
+
+        # Execute the update query
+        cursor.execute(query, values)
+        mysql.connection.commit()
+
+        return jsonify({'message': f'{action.capitalize()} time slot updated successfully!'}), 200
+
+    except MySQLdb.Error as e:
+        print("MySQL Error:", e)
+        return jsonify({'message': 'Failed to update the time slot.'}), 500
+
+    finally:
+        cursor.close()
 
 if __name__ == '__main__':
     app.run(debug=True)
