@@ -92,30 +92,6 @@ document.getElementById("parcelForm").addEventListener("submit", async function(
     delivery_time_slot: document.getElementById("delivery_time_slot").value
   };
   
-  console.log("Form data:", formData);
-  try {
-      // Send data to the Flask backend
-      const response = await fetch("http://127.0.0.1:5000/submit_parcel", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formData)
-      });
-        
-      const result = await response.json();
-      console.log("Server response:", result);
-
-      if (result.success) {
-          document.getElementById("statusMessage").innerText = "Parcel submitted successfully!";
-          document.getElementById("parcelForm").reset();
-      } else {
-          document.getElementById("statusMessage").innerText = "Failed to submit parcel.";
-      }
-  } catch (error) {
-      console.error("Error:", error);
-      document.getElementById("statusMessage").innerText = "An error occurred.";
-  }
 });
 
 // Capture selected delivery date and show delivery time slots
@@ -285,3 +261,20 @@ function updateDis() {
     });
   }
 }
+
+document.getElementById("parcelForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  
+  // Add your form submission logic here
+  console.log("Submit button clicked");
+
+  // Display the confirmation message
+  const confirmationMessage = document.getElementById("confirmationMessage");
+  confirmationMessage.style.display = "block";
+  
+  // Optionally, you can hide the message after a few seconds
+  setTimeout(() => {
+    confirmationMessage.style.display = "none";
+  }, 3000); // Adjust time as needed (3000ms = 3 seconds)
+});
+
